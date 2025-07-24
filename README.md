@@ -2,7 +2,7 @@
 
 ## Summary
 
-Sequential recommendation tracks users’ preferences over time based on historical activities to predict their next most probable action. This repository addresses cold‑start sequential recommendation by treating regular and cold‑start users as source and target domains, respectively, and applying domain adaptation techniques to narrow performance gaps caused by domain shifts.
+Sequential recommendation tracks users’ preferences over time based on historical activities to predict their next most probable action. This repository contains the DACSR model used to address cold‑start sequential recommendation by treating regular and cold‑start users as source and target domains, respectively, and applying domain adaptation techniques to narrow performance gaps caused by domain shifts.
 
 Key features:
 - **Dual‑Transformer Framework**: Separate transformer models for long (source) and short (target) sequences, collaboratively trained with shared item embeddings.
@@ -62,5 +62,9 @@ parser.add_argument(
 )  # 0 indicates target items must all be in source; items not in source are removed
 ```
 This allows you to switch between the **by_timestamp case 1** (filter out target-only items) and **case 2** (retain all target items) scenarios.
+
+## Hyperparameters
+We have provided the best sets of hyperparameters in `bestparam.txt` for both split scenarios
+
 
 
