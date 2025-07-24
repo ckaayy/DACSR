@@ -8,6 +8,7 @@ Sequential recommendation tracks users’ preferences over time based on histori
 Key features:
 - **Dual‑Transformer Framework**: Separate transformer models for long (source) and short (target) sequences, collaboratively trained with shared item embeddings.
 - **Emulated Target Domain**: Sampled short sequences from the source domain to simulate cold‑start conditions and bridge domain gaps via contrastive learning.
+- **Advanced Adaptation Variants**: Three model variants (DACSR, DACSR+, DACSR++) progressively reduce item popularity bias and incorporate user similarity into the contrastive loss for enhanced robustness under compound shifts.
 - **Robust Empirical Validation**: Experiments on five public datasets demonstrating consistent improvements over strong baselines under both length and item distribution shifts.
 
 ## Environment Setup
@@ -29,3 +30,23 @@ conda env create -f environment.yml
 #    Replace <env_name> with the name specified in environment.yml under 'name:'
 conda activate <env_name>
 
+# 5. Verify installation (optional)
+python -c "import torch; print(f'Torch version: {torch.__version__}')"
+```
+
+### Updating the Environment
+
+If dependencies change, update your environment with:
+
+```bash
+conda env update -f environment.yml --prune
+```
+
+### Deactivating the Environment
+
+To exit the environment when finished:
+
+```bash
+conda deactivate
+```
+````
