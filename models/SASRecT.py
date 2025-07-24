@@ -1,28 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Tue Jun 15 18:04:08 2021
-
-@author: wangl4
-"""
-# -*- coding: utf-8 -*-
-"""
-Created on Tue Jun 15 16:28:14 2021
-
-@author: wangl4
-"""
-
-# -*- coding: utf-8 -*-
-"""
-Created on Wed May 26 12:08:12 2021
-
-@author: -
-"""
-# -*- coding: utf-8 -*-
-"""
-Created on Mon Apr 19 05:22:22 2021
-
-@author: wangl4
-"""
 import torch
 import sys
 from models.base import BaseModel

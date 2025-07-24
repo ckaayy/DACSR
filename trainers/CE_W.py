@@ -18,17 +18,6 @@ def Coral(source,target):
     loss = torch.mean(torch.mul((xc - xct), (xc - xct)))
     loss = loss/(np.sqrt(d1*d2))
     return loss
-# def Coral(source,target):
-#     d1 = source.data.shape[0]
-#     #print(d1)
-#     d2 = target.data.shape[0]
-#     #print(d2)
-#     xm = torch.mean(source, 0, keepdim=True) 
-#     xmt = torch.mean(target, 0, keepdim=True) 
-#     # frobenius norm between source and target
-#     loss = torch.mean(torch.mul((xm - xmt), (xm - xmt)))
-#     loss = loss#/(np.sqrt(d1*d2))
-#     return loss
 
 def Similarity(source,target):
     #print(source.size())

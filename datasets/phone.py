@@ -1,9 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Fri Sep 17 14:00:11 2021
-
-@author: wangl4
-"""
 from .base import AbstractDataset
 
 import pandas as pd

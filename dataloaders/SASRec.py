@@ -1,15 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Thu Apr 22 14:30:22 2021
-
-@author: wangl4
-"""
-# -*- coding: utf-8 -*-
-"""
-Created on Mon Apr 19 04:22:23 2021
-
-@author: wangl4
-"""
 from .base import AbstractDataloader
 from .negative_samplers import negative_sampler_factory
 import numpy as np

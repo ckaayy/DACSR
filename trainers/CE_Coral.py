@@ -53,79 +53,7 @@ class ContrastiveLoss(nn.Module):
         self.static_weight = static_weight
         self.verbose = verbose
         self.device = device
-        # self.projector = nn.Sequential(
-        #     nn.Linear(64, 64),
-        #     nn.ReLU(inplace=True),
-        #     nn.Linear(64,64)
-        # ).to(self.device)
 
-   
-    # def forward(self, emb_i, emb_j):
-    #     """
-    #     emb_i and emb_j are batches of embeddings, where corresponding indices are pairs
-    #     z_i, z_j as per SimCLR paper
-    #     """
-    #     z_i = F.normalize(emb_i, dim=1)
-    #     #print(z_i.size())
-    #     z_j = F.normalize(emb_j, dim=1)
-
-    #     representations = torch.cat([z_i, z_j], dim=0)
-    #     similarity_matrix = F.cosine_similarity(representations.unsqueeze(1), representations.unsqueeze(0), dim=2)
-    #     if self.verbose: print("Similarity matrix\n", similarity_matrix, "\n")
-    #     batch_size = z_i.size()[0]   
-    #     def l_ij(i, j):
-    #         z_i_, z_j_ = representations[i], representations[j]
-    #         sim_i_j = similarity_matrix[i, j]
-    #         if self.verbose: print(f"sim({i}, {j})={sim_i_j}")
-                
-    #         numerator = torch.exp(sim_i_j / self.temperature)
-    #         one_for_not_i = torch.ones((2 * batch_size, )).scatter_(0, torch.tensor([i]), 0.0).to(self.device)
-    #         if self.verbose: print(f"1{{k!={i}}}",one_for_not_i)
-            
-    #         denominator = torch.sum(
-    #             one_for_not_i * torch.exp(similarity_matrix[i, :] / self.temperature)
-    #         )    
-    #         if self.verbose: print("Denominator", denominator)
-                
-    #         loss_ij = -torch.log(numerator / denominator)
-    #         #loss_ij = -torch.log(numerator)# / denominator
-    #         if self.verbose: print(f"loss({i},{j})={loss_ij}\n")
-                
-    #         return loss_ij.squeeze(0)
-
-    #     N = batch_size
-    #     loss = 0.0
-    #     for k in range(0, N):
-    #         loss += l_ij(k, k + N) + l_ij(k + N, k)
-    #     return 1.0 / (2*N) * loss
-    # def forward(self, emb_i: torch.Tensor, emb_j: torch.Tensor) -> torch.Tensor:
-    #     """
-    #     Args:
-    #         emb_i (Tensor): [batch_size, D] subsequence embeddings.
-    #         emb_j (Tensor): [batch_size, D] full-sequence embeddings.
-    #     Returns:
-    #         Tensor: scalar contrastive loss.
-    #     """
-    #     # 1) Normalize and move to device
-    #     z_i = F.normalize(emb_i, dim=1).to(self.device)  # [N, D]
-    #     z_j = F.normalize(emb_j, dim=1).to(self.device)  # [N, D]
-    #     N = z_i.size(0)
-
-    #     # 2) Cross-similarity between subsequence and full-sequence
-    #     sim = torch.matmul(z_i, z_j.t())  # [N, N]
-    #     if self.verbose:
-    #         print("Cross-view similarity matrix:\n", sim)
-
-    #     # logits and log-probabilities via log-softmax for stability
-    #     logits = sim / self.temperature    # [N, N]
-    #     log_prob = F.log_softmax(logits, dim=1)  # stable log probabilities
-
-    #     # weights: use softmax over raw similarities (or logits) with separate temp
-    #     weights = torch.softmax(logits, dim=1)  # [N, N]
-
-    #     # weighted loss
-    #     loss_i = - (weights * log_prob).sum(dim=1)  # [N]
-    #     return loss_i.mean()
     def forward(self, emb_i: torch.Tensor, emb_j: torch.Tensor) -> torch.Tensor:
         """
         Args:

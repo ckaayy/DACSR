@@ -3,7 +3,6 @@ from .SASRecT1 import Model_1
 from .SASRecTW import SASRecWModel
 from .SIGMA import SIGMA
 from .LinRec import LinRec
-# from .ColdNas import ColdNas
 MODELS = {
    
     Model.code(): Model,
@@ -11,14 +10,12 @@ MODELS = {
     SASRecWModel.code():SASRecWModel,
     SIGMA.code(): SIGMA,
     LinRec.code(): LinRec,
-    # ColdNas.code(): ColdNas,
     
 }
 
 
 def model_factory(args):
     if args.model_code == 'SIGMA':
-        # explicitly pass the right fields
         m = SIGMA(
             num_items    = args.num_items + 1,
             hidden_size  = args.hidden_units,
