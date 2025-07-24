@@ -32,3 +32,35 @@ Replace <env_name> with the name specified in environment.yml under 'name:'
 ```bash
 conda activate <env_name>
 ```
+## Running Experiments
+
+You can run experiments on different datasets by executing `main_<dataset_name>.py`. For example:
+
+```python
+python main_beauty.py --user_split by_timestamp
+```
+
+All experiment settings can be adjusted via command-line arguments. Below are some basic options you can adjust:
+
+```python
+parser.add_argument(
+    '--user_split',
+    type=str,
+    default='by_random',
+    choices=['by_timestamp','by_random'],
+    help='split the users into target and source'
+)
+```
+This allows you to switch the user split setting between the **by_random** and **by_timestamp** scenarios.
+
+```python
+parser.add_argument(
+    '--itemshift',
+    type=int,
+    default=0,
+    help='keep items in target not in source'
+)  # 0 indicates target items must all be in source; items not in source are removed
+```
+This allows you to switch between the **by_timestamp case 1** (filter out target-only items) and **case 2** (retain all target items) scenarios.
+
+
