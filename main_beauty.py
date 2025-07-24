@@ -124,7 +124,7 @@ if __name__ == '__main__':
     parser.add_argument('--user_split', type=str, default='by_random',choices=['by_timestamp','by_random'], help='split the users into target and source')
 
     parser.add_argument('--dataset_split_seed', type=int, default=98765)
-    parser.add_argument('--max_target_len', type=int, default=20, help='max cold start lens for users')
+    parser.add_argument('--max_target_len', type=int, default=4, help='max cold start lens for users')
 
 ################
 # Dataloader
