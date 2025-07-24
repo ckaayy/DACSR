@@ -1,4 +1,3 @@
-````markdown
 # Domain Adaptation for Cold‑Start Sequential Recommendation (DACSR)
 
 ## Summary
@@ -49,4 +48,3 @@ To exit the environment when finished:
 ```bash
 conda deactivate
 ```
-````
