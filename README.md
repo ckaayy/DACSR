@@ -59,7 +59,7 @@ parser.add_argument(
     type=int,
     default=0,
     help='keep items in target not in source'
-)  # 0 indicates target items must all be in source; items not in source are removed
+)  # '0' for case 1, '1' for case 2
 ```
 This allows you to switch between the **by_timestamp case 1** (filter out target-only items) and **case 2** (retain all target items) scenarios.
 
